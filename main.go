@@ -18,14 +18,6 @@ func main() {
 	}
 }
 
-func getHome(w http.ResponseWriter, r *http.Request) {
-	response := map[string]string{
-		"joke":   "http://localhost:8080/joke",
-		"madlib": "http://localhost:8080/madlib",
-	}
-	writeJson(w, response)
-}
-
 func getJoke(w http.ResponseWriter, r *http.Request) {
 	writeJson(w, GetRandomJoke())
 }
@@ -49,4 +41,12 @@ func writeJson(w http.ResponseWriter, data interface{}) {
 		http.Error(w, "Failed to write response", http.StatusInternalServerError)
 		return
 	}
+}
+
+func getHome(w http.ResponseWriter, r *http.Request) {
+	response := map[string]string{
+		"joke":   "http://localhost:8080/joke",
+		"madlib": "http://localhost:8080/madlib",
+	}
+	writeJson(w, response)
 }
